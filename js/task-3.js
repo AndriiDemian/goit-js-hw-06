@@ -1,27 +1,28 @@
-class Storage {
-    #items;
+class StringBuilder {
+    #value;
   
-    constructor(initialItems) {
-      this.#items = initialItems;
+    constructor(initialValue) {
+      this.#value = initialValue;
     }
   
-    getItems() {
-      return this.#items;
+    getValue() {
+      return this.#value;
     }
   
-    addItem(newItem) {
-      this.#items.push(newItem);
+    padEnd(str) {
+      this.#value += str;
     }
   
-    removeItem(itemToRemove) {
-      const index = this.#items.indexOf(itemToRemove);
-      if (index !== -1) {
-        this.#items.splice(index, 1);
-      }
+    padStart(str) {
+      this.#value = str + this.#value;
+    }
+  
+    padBoth(str) {
+      this.padStart(str);
+      this.padEnd(str);
     }
 }
-
-
+  
 const builder = new StringBuilder(".");
 console.log(builder.getValue()); // "."
 builder.padStart("^");
